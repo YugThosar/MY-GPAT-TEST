@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - GPAT Mock Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .register-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .register-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="register-container">
+    <h2>Register</h2>
+    {% if message %}
+        <div class="alert alert-info">{{ message }}</div>
+    {% endif %}
+    <form method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" name="name" id="name" class="form-control" required value="{{ name or '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" name="email" id="email" class="form-control" required value="{{ email or '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Create Password</label>
+            <input type="password" name="password" id="password" class="form-control" required value="{{ password or '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="code" class="form-label">Verification Code</label>
+            <input type="text" name="code" id="code" class="form-control" placeholder="Enter code sent to email (if received)">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Register / Verify</button>
+    </form>
+</div>
+</body>
+</html>

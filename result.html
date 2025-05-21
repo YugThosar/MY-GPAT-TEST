@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script>
+    // Prevent browser back navigation from result page
+        history.pushState(null, null, location.href);
+
+        window.addEventListener('popstate', function () {
+            // Redirect to thank you page if user presses back
+            location.replace("/thank_you");
+        });
+    </script>
+
+    <title>GPAT Mock Test Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 22px;
+        }
+        .result-box {
+            background: white;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .result-box h2 {
+            color: #003366;
+        }
+        .score {
+            font-size: 28px;
+            color: #2e8b57;
+        }
+        .summary {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .exit-message {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #8b0000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        GPAT Mock Test Result
+    </div>
+    <div class="result-box">
+        <h2>Test Completed!</h2>
+        <p class="score">Your Score: {{ score }} / {{ max_score }}</p>
+        <div class="summary">
+            <p>Total Questions: {{ total }}</p>
+            <p>Correct Answers: {{ correct_answers }}</p>
+            <p>Incorrect Answers: {{ incorrect_answers }}</p>
+            <p>Unattempted Questions: {{ unattempted }}</p>
+            <p>Attempted Questions: {{ attempted }}</p>
+        </div>
+        <p class="exit-message">Test Over. You may now exit.</p>
+    </div>
+    <script>
+        function disableBackButton() {
+            history.pushState(null, null, location.href);
+            window.onpopstate = function () {
+                location.href = "/thank_you";
+            };
+        }
+    </script>
+
+</body>
+
+
+
+</html>
+
